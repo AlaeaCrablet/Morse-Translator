@@ -57,7 +57,7 @@ public class MorseTrans {
     }
 
     private static boolean isMorse(String input) {
-        if (input.startsWith(".") || input.startsWith("-")) { return true; }
+        if (input.startsWith(".") || input.startsWith("-") || input.startsWith("/")) { return true; }
         else { return false; }
     }
 
@@ -67,6 +67,7 @@ public class MorseTrans {
         StringBuilder builder = new StringBuilder();
         for (String morseLetter : s) {
             if (morseLetter.equals("/")) { builder.append(" "); }
+            else if (morseLetter.equals("")) { continue; }
             else { builder.append(getKeyFromValue(morse, morseLetter)); }
         }
 
@@ -92,7 +93,6 @@ public class MorseTrans {
         for (Object o : map.keySet()) {
             if (map.get(o).equals(value)) {
                 result = o.toString();
-                System.out.println(result);
             }
         }
         return result;
